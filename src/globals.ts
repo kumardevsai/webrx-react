@@ -2,6 +2,7 @@ export interface WebRxReactGlobals {
   readonly DEBUG: boolean;
   readonly PRODUCTION: boolean;
   readonly TEST: boolean;
+  readonly WEBPACK_WATCH: boolean;
   readonly WEBPACK_DEV_SERVER: boolean;
   readonly VERSION: string;
 }
@@ -15,6 +16,7 @@ declare global {
   // also define our globals on the global namespace
   const PRODUCTION: typeof global.PRODUCTION;
   const TEST: typeof global.TEST;
+  const WEBPACK_WATCH: typeof global.WEBPACK_WATCH;
   const WEBPACK_DEV_SERVER: typeof global.WEBPACK_DEV_SERVER;
   const VERSION: typeof global.VERSION;
 }
@@ -49,6 +51,7 @@ let g: any = global;
 g.DEBUG = getValueOrDefault(() => DEBUG, env => env.NODE_ENV === 'debug', false);
 g.PRODUCTION = getValueOrDefault(() => PRODUCTION, env => env.NODE_ENV === 'production', true);
 g.TEST = getValueOrDefault(() => TEST, env => env.NODE_ENV === 'test', false);
+g.WEBPACK_WATCH = getValueOrDefault(() => WEBPACK_WATCH, env => env.NODE_ENV === 'watch', false);
 g.WEBPACK_DEV_SERVER = getValueOrDefault(() => WEBPACK_DEV_SERVER, env => env.NODE_ENV === 'webpack', false);
 g.VERSION = getValueOrDefault(() => VERSION, env => env.VERSION, 'BUILD');
 

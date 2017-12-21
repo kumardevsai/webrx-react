@@ -26,6 +26,7 @@ const defaults = Object.assign(
     'env.release': false,
     'env.min': false,
     'env.profile': false,
+    'watch': false,
   },
   defaultArgs,
 );
@@ -45,6 +46,7 @@ const options = {
     'env.release',
     'env.min',
     'env.profile',
+    'watch',
   ],
   default: defaults,
 };
@@ -71,6 +73,7 @@ export const commonConfig: Partial<webpack.Configuration> = {
       DEBUG: !args.env.release,
       PRODUCTION: args.env.release,
       TEST: false,
+      WEBPACK_WATCH: args.watch,
       WEBPACK_DEV_SERVER: false,
       VERSION: JSON.stringify(npmPackage.version),
     }),

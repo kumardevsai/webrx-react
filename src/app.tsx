@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
 
 // import our namespaced bootstrap styles
 import './Style/Bootstrap.less';
@@ -43,8 +42,15 @@ function renderApp(newViewModel = false) {
   );
 }
 
+let AppContainer: any;
+
+if (WEBPACK_WATCH) {
+  // tslint:disable-next-line no-var-requires
+  AppContainer = require('react-hot-loader').AppContainer;
+}
+
 function renderAppContainer(newViewModel = false): any {
-  if (WEBPACK_DEV_SERVER) {
+  if (WEBPACK_WATCH) {
     return (
       <AppContainer>
         { renderApp(newViewModel) }
@@ -59,7 +65,7 @@ if (container) {
   render(renderAppContainer(), container);
 }
 
-if (WEBPACK_DEV_SERVER) {
+if (WEBPACK_WATCH) {
   if (module.hot) {
     module.hot.accept(
       [

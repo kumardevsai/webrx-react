@@ -33,6 +33,7 @@ const definePlugin: any = config.plugins![0];
 
 if (definePlugin != null) {
   definePlugin.definitions.DEBUG = true;
+  definePlugin.definitions.WEBPACK_WATCH = true;
   definePlugin.definitions.WEBPACK_DEV_SERVER = true;
 }
 
