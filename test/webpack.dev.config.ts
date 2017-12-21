@@ -38,6 +38,7 @@ const definePlugin: any = config.plugins![0];
 
 if (definePlugin != null) {
   definePlugin.definitions.TEST = true;
+  definePlugin.definitions.WEBPACK_DEV_SERVER = true;
 }
 
 config.plugins!.push(
